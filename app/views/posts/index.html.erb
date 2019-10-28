@@ -15,8 +15,11 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
-        <td><%= post.user.username %></td>
+        <td><%= post.title %>
+        </td>
+        <td>
+          <p>by <em><%= link_to post.user.username, user_posts_path(name: post.user.username) %></em></p>
+        </td>
         <td><%= post.blog_entry %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
@@ -29,3 +32,6 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+<%= paginate @posts %>
+
+
